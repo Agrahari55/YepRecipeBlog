@@ -4,10 +4,10 @@
      </div>
    
      <div class="col-12 col-lg-6">
-       <h1 class="display-5 fw-bold mb-3">Huge selection of delicios recipe ideas</h1>
+       <h1 class="display-5 fw-bold mb-3">"Recipes Unleashed with Foodie Community"</h1>
        <p class="lead">
-         Explore our huge selection of delicious recipe ideas including; easy desserts, delicious vegan and vegetarian dinner ideas, gorgeous pasta recipes, quick bakes, family-friendly meals and gluten-free recipes.
-       </p>
+         Discover diverse flavors, techniques, and recipes from our vibrant community. Unleash your culinary creativity and share your journey with fellow foodies. Join us to explore, experiment, and connect through the joy of cooking.
+         </p>
    
        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
          <a href="/explore-latest" class="btn btn-primary btn-dark btn-lg px-4 me-md-2">Explore Latest</a>
@@ -62,7 +62,7 @@
          <% food.latest.forEach(function(recipe, index){ %>
          <a href="/recipe/<%= recipe._id %>" class="col text-center category__link">
            <div class="category__img category__img--large shadow">
-             <img src="/uploads/<%= recipe.image %>" alt="<%= recipe.name %>" loading="lazy">
+             <img src="<%= recipe.image %>" alt="<%= recipe.name %>" loading="lazy">
            </div>
            <div class="pt-1"><%= recipe.name %></div>
          </a>
@@ -75,19 +75,20 @@
    </section>
    <!-- Latest End -->
    
+
    <!-- Thai Start -->
    <section class="pb-4 pt-4">
      <div class="d-flex mb-2 align-items-center">
-       <h2>Thai Recipes</h2>
-       <a href="/categories/Thai" class="ms-auto">View More</a>
+       <h2>North Indian Recipes</h2>
+       <a href="/categories/NorthIC" class="ms-auto">View More</a>
      </div>
    
      <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-       <% if(typeof food.thai !== 'undefined' && food.thai.length > 0) { %>
-         <% food.thai.forEach(function(recipe, index){ %>
+       <% if(typeof food.NorthIC !== 'undefined' && food.NorthIC.length > 0) { %>
+         <% food.NorthIC.forEach(function(recipe, index){ %>
          <a href="/recipe/<%= recipe._id %>" class="col text-center category__link">
            <div class="category__img category__img--large shadow">
-             <img src="/uploads/<%= recipe.image %>" alt="<%= recipe.name %>" loading="lazy">
+             <img src="<%= recipe.image %>" alt="<%= recipe.name %>" loading="lazy">
            </div>
            <div class="pt-1"><%= recipe.name %></div>
          </a>
@@ -102,16 +103,16 @@
    <!-- American Start -->
    <section class="pb-4 pt-4">
      <div class="d-flex mb-2 align-items-center">
-       <h2>American Recipes</h2>
-       <a href="/categories/American" class="ms-auto">View More</a>
+       <h2>South Indian Recipes</h2>
+       <a href="/categories/SouthIC" class="ms-auto">View More</a>
      </div>
    
      <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-       <% if(food.american != '') { %>
-         <% food.american.forEach(function(recipe, index){ %>
+       <% if(food.SouthIC != '') { %>
+         <% food.SouthIC.forEach(function(recipe, index){ %>
          <a href="/recipe/<%= recipe._id %>" class="col text-center category__link">
            <div class="category__img category__img--large shadow">
-             <img src="/uploads/<%= recipe.image %>" alt="<%= recipe.name %>" loading="lazy">
+             <img src="<%= recipe.image %>" alt="<%= recipe.name %>" loading="lazy">
            </div>
            <div class="pt-1"><%= recipe.name %></div>
          </a>
@@ -127,15 +128,15 @@
    <section class="pb-4 pt-4">
      <div class="d-flex mb-2 align-items-center">
        <h2>Chinese Recipes</h2>
-       <a href="/categories/American" class="ms-auto">View More</a>
+       <a href="/categories/EastIC" class="ms-auto">View More</a>
      </div>
    
      <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-       <% if(food.chinese != '') { %>
-         <% food.chinese.forEach(function(recipe, index){ %>
+       <% if(food.EastIC != '') { %>
+         <% food.EastIC.forEach(function(recipe, index){ %>
          <a href="/recipe/<%= recipe._id %>" class="col text-center category__link">
            <div class="category__img category__img--large shadow">
-             <img src="/uploads/<%= recipe.image %>" alt="<%= recipe.name %>" loading="lazy">
+             <img src="<%= recipe.image %>" alt="<%= recipe.name %>" loading="lazy">
            </div>
            <div class="pt-1"><%= recipe.name %></div>
          </a>
@@ -145,7 +146,7 @@
        <% } %>
      </div>
    </section>
-   <!-- American End -->
+   <!-- chinese End -->
    
    
    

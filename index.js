@@ -5,10 +5,17 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
 
+const cloudinary = require('cloudinary').v2;
 const app = express();
 const port = process.env.PORT || 3000;
 
 require('dotenv').config();
+// Configure Cloudinary
+cloudinary.config({ 
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
+});
 
 app.use(express.urlencoded( { extended: true } ));
 app.use(express.static('public'));
@@ -21,8 +28,11 @@ app.use(session({
   resave: true
 }));
 app.use(flash());
-app.use(fileUpload());
+app.use(fileUpload({
+  useTempFiles : true
+}));
 
+// app.use(fileUpload());
 app.set('layout', './layouts/main');
 app.set('view engine', 'ejs');
 

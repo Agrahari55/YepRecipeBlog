@@ -32,7 +32,6 @@ recipeSchema.index({ name: 'text', description: 'text' });
 // WildCard Indexing
 //recipeSchema.index({ "$**" : 'text' });
 
-// module.exports = mongoose.model('Recipe', recipeSchema);
 module.exports = mongoose.models.Recipe || mongoose.model('Recipe',recipeSchema);
 
 
