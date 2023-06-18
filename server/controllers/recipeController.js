@@ -24,7 +24,7 @@ exports.homepage = async(req,res) => {
     const SouthIC = await Recipe.find({ 'category': 'SouthIC' }).limit(limitNumber);
     const EastIC = await Recipe.find({ 'category': 'EastIC' }).limit(limitNumber);
 
-    const food = { latest, NorthIC,SouthIC,EastIC};
+    const food = { latest,NorthIC,SouthIC,EastIC};
 
     res.render('index', { title: 'Cooking Blog - Home', categories, food } );
   } catch (error) {
@@ -56,7 +56,7 @@ exports.exploreCategoriesById = async(req, res) => {
     let categoryId = req.params.id;
     const limitNumber = 10;
     const categoryById = await Recipe.find({ 'category': categoryId }).limit(limitNumber);
-    res.render('categories', { title: 'Cooking Blog - Categoreis', categoryById } );
+    res.render('categories', { title: 'Cooking Blog - Categories', categoryById } );
   } catch (error) {
     res.satus(500).send({message: error.message || "Error Occured" });
   }
@@ -87,10 +87,10 @@ exports.searchRecipe = async(req, res) => {
     let searchTerm = req.body.searchTerm;
     let recipe = await Recipe.find( { $text: { $search: searchTerm, $diacriticSensitive: true } });
     res.render('search', { title: 'Cooking Blog - Search', recipe } );
-  } catch (error) {
+  }
+  catch (error) {
     res.satus(500).send({message: error.message || "Error Occured" });
   }
-  
 }
 
 
@@ -148,27 +148,27 @@ exports.submitRecipe = async(req, res) => {
 
 exports.submitRecipeOnPost = async (req, res) => {
   try {
-    console.log("ghuse hai hm");
+    // console.log("ghuse hai hm");
     // console.log(CLOUDINARY_API_SECRET);
     if (!req.files || Object.keys(req.files).length === 0) {
-      console.log('No files were uploaded.');
+      // console.log('No files were uploaded.');
       // Handle the case when no file was uploaded
       return res.redirect('/submit-recipe');
     }
 
     const imageUploadFile = req.files.image;
 
-    console.log("dekhit hai image aayi ka");
-    console.log(imageUploadFile);
+    // console.log("dekhit hai image aayi ka");
+    // console.log(imageUploadFile);
 
     // Upload image to Cloudinary
-    console.log("image upload kre jait hai");
+    // console.log("image upload kre jait hai");
     const uploadResult = await cloudinary.uploader.upload(imageUploadFile.tempFilePath);
-    console.log("upload kaike lauta hai");
-    console.log(uploadResult);
+    // console.log("upload kaike lauta hai");
+    // console.log(uploadResult);
 
-    console.log("result url dekho")
-    console.log(uploadResult.secure_url);
+    // console.log("result url dekho")
+    // console.log(uploadResult.secure_url);
 
     // Create new recipe object with Cloudinary image URL
     const newRecipe = new Recipe({
@@ -181,7 +181,7 @@ exports.submitRecipeOnPost = async (req, res) => {
     });
 
     // Save the new recipe object to the database
-    console.log("object dekho")
+    // console.log("object dekho")
     console.log(newRecipe);
     await newRecipe.save();
 
@@ -265,27 +265,31 @@ async function insertDymmyCategoryData(){
     await Category.insertMany([
       {
         "name": "NorthIC",
-        "image": "thai-food.jpg"
+        "image": "paper dosa.jpg"
       },
       {
         "name": "SouthIC",
-        "image": "american-food.jpg"
+        "image": "idli.jpg"
       }, 
       {
         "name": "EastIC",
-        "image": "chinese-food.jpg"
+        "image": "salmon fish seafood.jpg"
       },
       {
         "name": "WestIC",
-        "image": "mexican-food.jpg"
+        "image": "rasgulla.jpg"
       }, 
       {
         "name": "CentralIC",
-        "image": "indian-food.jpg"
+        "image": "panipuri.jpg"
       },
       {
-        "name": "VegIC",
-        "image": "spanish-food.jpg"
+        "name":"NonVegIC",
+        "image":"curry chicken.jpg"
+      },
+      {
+        "name":"VegIC",
+        "image":"pizza.jpg"
       }
     ]);
   } catch (error) {
